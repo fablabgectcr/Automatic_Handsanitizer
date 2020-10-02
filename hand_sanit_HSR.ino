@@ -8,6 +8,19 @@ void setup()
 	pinMode(echoPin, INPUT); // echo pin should be input to get pulse width
 	pinMode(buzzPin, OUTPUT); // buzz pin is output to control buzzering
 }
+void servo()
+{ 
+       myservo.write(45); // Sets Servo in stages from 0 to 180 degrees so soap does not pitch out. 
+       delay(100);
+       myservo.write(90);
+       delay(100);
+       myservo.write(135);
+       delay(100);
+       myservo.write(180); //Ajust how far you want the servo to go.
+       delay(1000);
+       myservo.write(0); // Reset the servo to 0 Degrees
+       delay(3000);   //Delay the next time someone can get soap
+    }   
 
 void loop()
 {
@@ -33,20 +46,6 @@ void loop()
     delay(60);
 }
 
-void loop() {
-   int statusSensor=digitalRead(IRSensor);
-    //Servo
-    if(statusSensor== HIGH)
-    { //Check distance is less than 10cm 
-       myservo.write(45); // Sets Servo in stages from 0 to 180 degrees so soap does not pitch out. 
-       delay(100);
-       myservo.write(90);
-       delay(100);
-       myservo.write(135);
-       delay(100);
-       myservo.write(180); //Ajust how far you want the servo to go.
-       delay(1000);
-       myservo.write(0); // Reset the servo to 0 Degrees
-       delay(3000);   //Delay the next time someone can get soap
-    }                 
+
+                  
 }
