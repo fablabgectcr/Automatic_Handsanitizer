@@ -7,6 +7,7 @@ void setup()
 	pinMode(trigPin, OUTPUT); // trig pin will have pulses output
 	pinMode(echoPin, INPUT); // echo pin should be input to get pulse width
 	pinMode(buzzPin, OUTPUT); // buzz pin is output to control buzzering
+	Serial.begin(9600);
 }
 void servo()
 { 
@@ -16,7 +17,7 @@ void servo()
        delay(100);
        myservo.write(135);
        delay(100);
-       myservo.write(180); //Ajust how far you want the servo to go.
+       myservo.write(180); 
        delay(1000);
        myservo.write(0); // Reset the servo to 0 Degrees
        delay(3000);   //Delay the next time someone can get soap
@@ -28,8 +29,10 @@ void loop()
 	int duration, distance;
 	// Output pulse with 1ms width on trigPin
 	digitalWrite(trigPin, HIGH); 
+	Serial.print("sensor@high");
 	delay(1);
 	digitalWrite(trigPin, LOW);
+	Serial.print("Sensor@low");
 	// Measure the pulse input in echo pin
 	duration = pulseIn(echoPin, HIGH);
 	// Distance is half the duration devided by 29.1 (from datasheet)
@@ -44,6 +47,7 @@ void loop()
     }
     // Waiting 60 ms won't hurt any one
     delay(60);
+	Serial.Print("final delay executed");
 }
 
 
